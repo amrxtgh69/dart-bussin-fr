@@ -3,11 +3,11 @@ import 'package:cli/cli.dart';
 import 'package:http/http.dart' as http;
 
 void main(List<String> arguments) {
-  if (arguments.isEmpty) {
-    print("Hello Dario");
+  if (arguments.isEmpty || arguments == null) {
+    printUsage();
   } else if (arguments.first == "version") {
     print("Dartpedia CLI version $version");
-  } else if (arguments.first == "search") { 
+  } else if (arguments.first == "wikipedia") { 
     /* `arguments.sublist(1)` creates the list containing all elements
      *  of argument after the first element (search)
     */
@@ -18,7 +18,7 @@ void main(List<String> arguments) {
   }
 }
 
-void searchWikipedia(List<String>? arguments) {
+void searchWikipedia(List<String>? arguments) async {
   final String? articleTitle;
 
   // if the user didn't pass any arguments then request an article title 
@@ -32,8 +32,8 @@ void searchWikipedia(List<String>? arguments) {
   }
 
   print("Looking for an article about '$articleTitle'. Please wait.");
-  print("Here ya go!");
-  print("Pretend this is an article about '$articleTitle'");
+  var articleContent = await getWikipediaArticle(articleTitle);
+  print(articleContent);
 }
 
 void printUsage() {
