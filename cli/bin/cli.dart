@@ -3,7 +3,7 @@ import 'package:cli/cli.dart';
 import 'package:http/http.dart' as http;
 
 void main(List<String> arguments) {
-  if (arguments.isEmpty || arguments == "help") {
+  if (arguments.isEmpty || arguments.first == "help") {
     printUsage();
   } else if (arguments.first == "version") {
     print("Dartpedia CLI version $version");
