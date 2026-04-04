@@ -38,7 +38,7 @@ void searchWikipedia(List<String>? arguments) async {
 
 void printUsage() {
   print(
-    "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'"
+    "The following commands are valid: 'help', 'version', 'wikipedia <ARTICLE-TITLE>'"
   );
 }
 
