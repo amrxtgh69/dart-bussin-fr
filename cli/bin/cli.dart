@@ -1,21 +1,24 @@
 import 'dart:io';
 import 'package:cli/cli.dart';
+import 'package:command_runner/command_runner.dart';
 import 'package:http/http.dart' as http;
 
-void main(List<String> arguments) {
-  if (arguments.isEmpty || arguments.first == "help") {
-    printUsage();
-  } else if (arguments.first == "version") {
-    print("Dartpedia CLI version $version");
-  } else if (arguments.first == "wikipedia") { 
-    /* `arguments.sublist(1)` creates the list containing all elements
-     *  of argument after the first element (search)
-    */
-    final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null; 
-    searchWikipedia(inputArgs);
-  } else {
-    printUsage();
-  }
+void main(List<String> arguments) async {
+  //if (arguments.isEmpty || arguments.first == "help") {
+  //  printUsage();
+  //} else if (arguments.first == "version") {
+  //  print("Dartpedia CLI version $version");
+  //} else if (arguments.first == "wikipedia") { 
+  //  /* `arguments.sublist(1)` creates the list containing all elements
+  //   *  of argument after the first element (search)
+  //  */
+  //  final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null; 
+  //  searchWikipedia(inputArgs);
+  //} else {
+  //  printUsage();
+  //}
+  var runner = CommandRunner();
+  await runner.run(arguments);
 }
 
 void searchWikipedia(List<String>? arguments) async {
